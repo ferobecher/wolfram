@@ -1,4 +1,5 @@
 import { Routes, Route } from "react-router-dom";
+import { Analytics } from "@vercel/analytics/react";
 import Navbar from "@/components/sections/Navbar";
 import Hero from "@/components/sections/Hero";
 import Services from "@/components/sections/Services";
@@ -34,10 +35,13 @@ function Site() {
 
 function App() {
   return (
-    <Routes>
-      <Route path="/" element={<Site />} />
-      <Route path="/admin" element={<AdminLogin />} />
-    </Routes>
+    <>
+      <Routes>
+        <Route path="/" element={<Site />} />
+        <Route path="/admin" element={<AdminLogin />} />
+      </Routes>
+      <Analytics />
+    </>
   );
 }
 
