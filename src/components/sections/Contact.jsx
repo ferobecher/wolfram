@@ -1,14 +1,29 @@
+import { Mail, Phone, Instagram } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
-import { contacts } from "@/data";
+import { useContent } from "@/context/ContentContext";
+import EditableText from "@/components/admin/EditableText";
+
+const CONTACT_ICONS = {
+  contact_email: Mail,
+  contact_phone: Phone,
+  contact_instagram: Instagram,
+};
+
+const CONTACT_LABELS = {
+  contact_email: "Napíšte nám",
+  contact_phone: "Zavolajte",
+  contact_instagram: "Sledujte nás",
+};
 
 function Contact() {
+  const { content } = useContent();
+
   function handleSubmit(e) {
     e.preventDefault();
-    // TODO: napojiť na backend / e-mailovú službu
   }
 
   return (
@@ -25,33 +40,44 @@ function Contact() {
       />
       <div className="relative grid items-start gap-14 lg:grid-cols-[0.85fr_1.15fr]">
         <div>
-          <div className="mb-3.5 font-display text-xs font-semibold uppercase tracking-[0.3em] text-primary">
-            Kontakt
-          </div>
-          <h2 className="mb-4 font-display text-[32px] font-bold leading-[1.1] tracking-[-0.02em] text-white sm:text-[40px]">
-            Povedzte nám o vašom projekte
-          </h2>
-          <p className="mb-9 text-[16px] leading-relaxed text-muted-foreground">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ozveme sa
-            vám do 24 hodín s nezáväznou ponukou.
-          </p>
+          <EditableText
+            contentKey="contact_label"
+            as="div"
+            className="mb-3.5 font-display text-xs font-semibold uppercase tracking-[0.3em] text-primary"
+          />
+          <EditableText
+            contentKey="contact_title"
+            as="h2"
+            className="mb-4 font-display text-[32px] font-bold leading-[1.1] tracking-[-0.02em] text-white sm:text-[40px]"
+          />
+          <EditableText
+            contentKey="contact_description"
+            as="p"
+            multiline
+            className="mb-9 text-[16px] leading-relaxed text-muted-foreground"
+          />
 
           <div className="flex flex-col gap-5">
-            {contacts.map(({ icon: Icon, label, value }) => (
-              <div key={label} className="flex items-center gap-[15px]">
-                <div className="flex size-[42px] shrink-0 items-center justify-center rounded-[10px] border border-white/[0.09] bg-white/[0.04]">
-                  <Icon className="size-5 text-primary" strokeWidth={1.8} />
-                </div>
-                <div>
-                  <div className="text-xs tracking-[0.04em] text-muted-foreground">
-                    {label}
+            {Object.keys(CONTACT_ICONS).map((key) => {
+              const Icon = CONTACT_ICONS[key];
+              return (
+                <div key={key} className="flex items-center gap-[15px]">
+                  <div className="flex size-[42px] shrink-0 items-center justify-center rounded-[10px] border border-white/[0.09] bg-white/[0.04]">
+                    <Icon className="size-5 text-primary" strokeWidth={1.8} />
                   </div>
-                  <div className="font-display text-[15.5px] font-semibold text-white">
-                    {value}
+                  <div>
+                    <div className="text-xs tracking-[0.04em] text-muted-foreground">
+                      {CONTACT_LABELS[key]}
+                    </div>
+                    <EditableText
+                      contentKey={key}
+                      as="div"
+                      className="font-display text-[15.5px] font-semibold text-white"
+                    />
                   </div>
                 </div>
-              </div>
-            ))}
+              );
+            })}
           </div>
         </div>
 
