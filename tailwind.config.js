@@ -62,10 +62,15 @@ export default {
           "0%, 100%": { opacity: "0.5" },
           "50%": { opacity: "1" },
         },
+        "menu-down": {
+          from: { opacity: "0", transform: "translateY(-8px)" },
+          to: { opacity: "1", transform: "translateY(0)" },
+        },
       },
       animation: {
         float: "float 7s ease-in-out infinite",
         "pulse-dot": "pulse-dot 2.4s ease-in-out infinite",
+        "menu-down": "menu-down 0.22s ease",
       },
     },
   },

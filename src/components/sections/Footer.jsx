@@ -33,10 +33,10 @@ const columns = [
 
 function Footer() {
   return (
-    <footer className="border-t border-white/[0.07] bg-[#070709] px-6 pb-8 pt-14 md:px-10">
+    <footer className="border-t border-white/[0.07] bg-[#070709] px-5 pb-7 pt-10 md:px-10 md:pb-8 md:pt-14">
       <div className="mx-auto max-w-[1240px]">
-        <div className="grid gap-10 border-b border-white/[0.07] pb-11 md:grid-cols-2 lg:grid-cols-[1.6fr_1fr_1fr_1fr]">
-          <div>
+        <div className="grid grid-cols-2 gap-x-5 gap-y-7 border-b border-white/[0.07] pb-8 md:gap-10 md:grid-cols-2 lg:grid-cols-[1.6fr_1fr_1fr_1fr]">
+          <div className="col-span-2 md:col-span-1">
             <Wordmark className="mb-[18px]" />
             <p className="mb-5 max-w-[300px] text-sm leading-relaxed text-muted-foreground">
               Custom Performance Systems. Lorem ipsum dolor sit amet,
@@ -79,7 +79,7 @@ function Footer() {
           ))}
         </div>
 
-        <div className="flex flex-wrap items-center justify-between gap-3.5 pt-6">
+        <div className="flex flex-col gap-3.5 pt-6 md:flex-row md:items-center md:justify-between">
           <span className="text-[13px] text-muted-foreground/80">
             © 2026 Wolfram Group. Všetky práva vyhradené.
           </span>

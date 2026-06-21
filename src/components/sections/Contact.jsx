@@ -29,7 +29,7 @@ function Contact() {
   return (
     <section
       id="kontakt"
-      className="relative mx-auto max-w-[1240px] px-6 py-[90px] md:px-10"
+      className="relative mx-auto max-w-[1240px] px-5 py-[50px] md:px-10 md:py-[90px]"
     >
       <div
         className="pointer-events-none absolute right-[5%] top-0 h-[420px] w-[520px] blur-2xl"
@@ -38,7 +38,7 @@ function Contact() {
             "radial-gradient(ellipse at center, hsl(var(--primary) / 0.1), transparent 65%)",
         }}
       />
-      <div className="relative grid items-start gap-14 lg:grid-cols-[0.85fr_1.15fr]">
+      <div className="relative flex flex-col gap-10 md:grid md:items-start md:gap-14 lg:grid-cols-[0.85fr_1.15fr]">
         <div>
           <EditableText
             contentKey="contact_label"
@@ -48,16 +48,16 @@ function Contact() {
           <EditableText
             contentKey="contact_title"
             as="h2"
-            className="mb-4 font-display text-[32px] font-bold leading-[1.1] tracking-[-0.02em] text-white sm:text-[40px]"
+            className="mb-[14px] font-display text-[30px] font-bold leading-[1.1] tracking-[-0.02em] text-white md:mb-4 md:text-[40px]"
           />
           <EditableText
             contentKey="contact_description"
             as="p"
             multiline
-            className="mb-9 text-[16px] leading-relaxed text-muted-foreground"
+            className="mb-[26px] text-[15px] leading-relaxed text-muted-foreground md:mb-9 md:text-[16px]"
           />
 
-          <div className="flex flex-col gap-5">
+          <div className="flex flex-col gap-[14px] md:gap-5">
             {Object.keys(CONTACT_ICONS).map((key) => {
               const Icon = CONTACT_ICONS[key];
               return (
@@ -81,9 +81,9 @@ function Contact() {
           </div>
         </div>
 
-        <Card className="p-6 sm:p-[34px]">
+        <Card className="px-5 py-6 md:p-[34px]">
           <form onSubmit={handleSubmit} className="space-y-[18px]">
-            <div className="grid gap-[18px] sm:grid-cols-2">
+            <div className="grid grid-cols-1 gap-[18px] md:grid-cols-2">
               <div className="space-y-2">
                 <Label htmlFor="name">Meno</Label>
                 <Input id="name" placeholder="Vaše meno" />
