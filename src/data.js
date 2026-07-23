@@ -1,63 +1,91 @@
-import {
-  Cpu,
-  Sparkles,
-  MemoryStick,
-  Stethoscope,
-  Cable,
-  Gauge,
-  Mail,
-  Phone,
-  Instagram,
-} from "lucide-react";
+import { Cpu, Sparkles, MemoryStick, Stethoscope, Cable, Gauge, Mail, Phone, Instagram } from "lucide-react";
+
+export const content = {
+  hero_badge: "CUSTOM PERFORMANCE SYSTEMS",
+  hero_title_1: "Počítače stavané",
+  hero_title_2: "na maximálny výkon",
+  hero_description:
+    "Staviame, čistíme a optimalizujeme zostavy na mieru — od kancelárskeho PC po výkonný herný stroj. Spoľahlivo, čisto a s dôrazom na detail.",
+  stat_1_value: "5 +",
+  stat_1_label: "Rokov skúseností",
+  stat_2_value: "24 h",
+  stat_2_label: "Priemerná odozva",
+  stat_3_value: "2 roky",
+  stat_3_label: "Záruka na prácu",
+  services_label: "ČO PONÚKAME",
+  services_title: "Služby od stavby po údržbu",
+  services_description: "",
+  process_label: "AKO TO PREBIEHA",
+  process_title: "Jednoduchý postup v 4 krokoch",
+  contact_label: "KONTAKT",
+  contact_title: "Povedzte nám o vašom projekte",
+  contact_description:
+    "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ozveme sa vám do 24 hodín s nezáväznou ponukou.",
+  contact_email: "wolframgroup26@gmail.com",
+  contact_phone: "+421 944 074 022",
+  contact_instagram: "@wolfram.group",
+  footer_description:
+    "Custom Performance Systems. Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+  footer_instagram: "@wolfram.group",
+};
+
+export const heroPhotoUrl =
+  "https://stwdxszimedzvmomhowv.supabase.co/storage/v1/object/public/photos/hero/1782154312657.png";
 
 export const services = [
   {
+    id: 1,
     icon: Cpu,
     title: "Zostavenie PC na mieru",
-    desc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Navrhneme a postavíme zostavu presne podľa vášho rozpočtu a využitia.",
+    description: "Navrhneme a postavíme zostavu presne podľa vášho rozpočtu a využitia.",
   },
   {
+    id: 2,
     icon: Sparkles,
     title: "Čistenie a údržba",
-    desc: "Lorem ipsum dolor sit amet. Hĺbkové vyčistenie od prachu, výmena teplovodivej pasty a kontrola teplôt.",
+    description: "Hĺbkové vyčistenie od prachu, výmena teplovodivej pasty a kontrola teplôt.",
   },
   {
+    id: 3,
     icon: MemoryStick,
     title: "Upgrade komponentov",
-    desc: "Lorem ipsum dolor sit amet, consectetur. Pridáme RAM, SSD, grafickú kartu či chladenie pre vyšší výkon.",
+    description: "Pridáme RAM, SSD, grafickú kartu či chladenie pre vyšší výkon.",
   },
   {
+    id: 4,
     icon: Stethoscope,
     title: "Diagnostika a opravy",
-    desc: "Lorem ipsum dolor sit amet, consectetur adipiscing. Nájdeme príčinu problému a opravíme hardvér aj softvér.",
+    description: "Nájdeme príčinu problému a opravíme hardvér aj softvér.",
   },
   {
+    id: 5,
     icon: Cable,
     title: "Manažment káblov",
-    desc: "Lorem ipsum dolor sit amet. Prehľadné a čisté vedenie káblov pre lepšie prúdenie vzduchu a vzhľad.",
+    description: "Prehľadné a čisté vedenie káblov pre lepšie prúdenie vzduchu a vzhľad.",
   },
   {
+    id: 6,
     icon: Gauge,
     title: "Optimalizácia výkonu",
-    desc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Doladíme systém, ovládače a chladenie pre stabilný výkon.",
+    description: "Doladíme systém, ovládače a chladenie pre stabilný výkon.",
   },
 ];
 
 export const steps = [
-  { num: "01", title: "Konzultácia", desc: "Lorem ipsum dolor sit amet. Spoznáme vaše potreby a rozpočet." },
-  { num: "02", title: "Návrh zostavy", desc: "Consectetur adipiscing elit. Vyberieme ideálne komponenty." },
-  { num: "03", title: "Stavba a testy", desc: "Sed do eiusmod tempor. Postavíme a dôkladne otestujeme." },
-  { num: "04", title: "Odovzdanie", desc: "Incididunt ut labore. Doručíme pripravený a vyladený stroj." },
+  { id: 1, num: "01", title: "Konzultácia", description: "Spoznáme vaše potreby a rozpočet." },
+  { id: 2, num: "02", title: "Návrh zostavy", description: "Vyberieme ideálne komponenty." },
+  { id: 3, num: "03", title: "Stavba a testy", description: "Postavíme a dôkladne otestujeme." },
+  { id: 4, num: "04", title: "Odovzdanie", description: "Doručíme pripravený a vyladený stroj." },
 ];
 
 export const contacts = [
-  { icon: Mail, label: "Napíšte nám", value: "info@wolfram.group" },
-  { icon: Phone, label: "Zavolajte", value: "+421 900 000 000" },
+  { icon: Mail, label: "Napíšte nám", value: "wolframgroup26@gmail.com" },
+  { icon: Phone, label: "Zavolajte", value: "+421 944 074 022" },
   { icon: Instagram, label: "Sledujte nás", value: "@wolfram.group" },
 ];
 
 export const stats = [
-  { value: "500+", label: "Zostáv postavených" },
+  { value: "5 +", label: "Rokov skúseností" },
   { value: "24 h", label: "Priemerná odozva" },
   { value: "2 roky", label: "Záruka na prácu" },
 ];

@@ -23,8 +23,8 @@ const columns = [
   {
     title: "Kontakt",
     links: [
-      { href: "mailto:info@wolfram.group", label: "info@wolfram.group" },
-      { href: "tel:+421900000000", label: "+421 900 000 000" },
+      { href: "mailto:wolframgroup26@gmail.com", label: "wolframgroup26@gmail.com" },
+      { href: "tel:+421944074022", label: "+421 944 074 022" },
       { href: null, label: "Bratislava, Slovensko" },
       { href: null, label: "Po–Pia · 9:00–17:00" },
     ],

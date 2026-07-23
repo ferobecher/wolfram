@@ -1,7 +1,6 @@
 import { ArrowRight, Cpu } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import EditableText from "@/components/admin/EditableText";
-import HeroPhoto from "@/components/admin/HeroPhoto";
+import { content, stats, heroPhotoUrl } from "@/data";
 
 function Hero() {
   return (
@@ -17,24 +16,19 @@ function Hero() {
         <div className="md:order-1 lg:col-start-1 lg:row-start-1">
           <div className="mb-[22px] inline-flex items-center gap-2.5 rounded-full border border-primary/35 bg-primary/[0.06] px-[13px] py-[7px] md:mb-7 md:px-3.5">
             <span className="h-1.5 w-1.5 animate-pulse-dot rounded-full bg-primary" />
-            <EditableText
-              contentKey="hero_badge"
-              as="span"
-              className="font-display text-[11px] font-medium uppercase tracking-[0.28em] text-primary/90"
-            />
+            <span className="font-display text-[11px] font-medium uppercase tracking-[0.28em] text-primary/90">
+              {content.hero_badge}
+            </span>
           </div>
 
           <h1 className="mb-[18px] font-display text-[38px] font-bold leading-[1.06] tracking-[-0.02em] text-white md:mb-6 md:text-[52px] md:leading-[1.04] md:text-balance lg:text-[58px]">
-            <EditableText contentKey="hero_title_1" as="span" className="block" />
-            <EditableText contentKey="hero_title_2" as="span" className="text-primary" />
+            <span className="block">{content.hero_title_1}</span>
+            <span className="text-primary">{content.hero_title_2}</span>
           </h1>
 
-          <EditableText
-            contentKey="hero_description"
-            as="p"
-            multiline
-            className="mb-[26px] max-w-[480px] text-[17px] leading-relaxed text-muted-foreground md:mb-9"
-          />
+          <p className="mb-[26px] max-w-[480px] text-[17px] leading-relaxed text-muted-foreground md:mb-9">
+            {content.hero_description}
+          </p>
 
           <div className="flex flex-col gap-[11px] md:flex-row md:flex-wrap md:gap-3.5">
             <Button asChild className="w-full md:w-auto">
@@ -57,7 +51,15 @@ function Hero() {
                 "linear-gradient(140deg, hsl(var(--primary) / 0.5), transparent 55%)",
             }}
           />
-          <HeroPhoto className="relative z-0 h-[300px] rounded-[17px] border border-white/10 bg-gradient-to-br from-white/[0.04] to-transparent md:h-[440px]" />
+          <div className="relative z-0 h-[300px] rounded-[17px] border border-white/10 bg-gradient-to-br from-white/[0.04] to-transparent md:h-[440px] overflow-hidden">
+            {heroPhotoUrl && (
+              <img
+                src={heroPhotoUrl}
+                alt="Wolfram Group — zostava na mieru"
+                className="h-full w-full object-cover"
+              />
+            )}
+          </div>
           <div className="absolute bottom-[18px] left-[18px] z-20 flex items-center gap-3 rounded-[10px] border border-white/10 bg-background/80 px-4 py-[11px] backdrop-blur">
             <Cpu className="size-[18px] text-primary" />
             <div>
@@ -72,18 +74,14 @@ function Hero() {
         </div>
 
         <div className="grid grid-cols-3 gap-[10px] border-t border-white/[0.07] pt-[26px] md:order-2 md:flex md:gap-10 md:pt-8 lg:col-start-1 lg:row-start-2">
-          {[1, 2, 3].map((n) => (
-            <div key={n}>
-              <EditableText
-                contentKey={`stat_${n}_value`}
-                as="div"
-                className="font-display text-[24px] font-bold text-white md:text-[30px]"
-              />
-              <EditableText
-                contentKey={`stat_${n}_label`}
-                as="div"
-                className="mt-[3px] text-[12px] text-muted-foreground md:mt-0.5 md:text-[13px]"
-              />
+          {stats.map((stat, i) => (
+            <div key={i}>
+              <div className="font-display text-[24px] font-bold text-white md:text-[30px]">
+                {stat.value}
+              </div>
+              <div className="mt-[3px] text-[12px] text-muted-foreground md:mt-0.5 md:text-[13px]">
+                {stat.label}
+              </div>
             </div>
           ))}
         </div>

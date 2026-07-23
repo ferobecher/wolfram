@@ -1,27 +1,11 @@
-import { Mail, Phone, Instagram } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
-import { useContent } from "@/context/ContentContext";
-import EditableText from "@/components/admin/EditableText";
-
-const CONTACT_ICONS = {
-  contact_email: Mail,
-  contact_phone: Phone,
-  contact_instagram: Instagram,
-};
-
-const CONTACT_LABELS = {
-  contact_email: "Napíšte nám",
-  contact_phone: "Zavolajte",
-  contact_instagram: "Sledujte nás",
-};
+import { content, contacts } from "@/data";
 
 function Contact() {
-  const { content } = useContent();
-
   function handleSubmit(e) {
     e.preventDefault();
   }
@@ -40,40 +24,31 @@ function Contact() {
       />
       <div className="relative flex flex-col gap-10 md:grid md:items-start md:gap-14 lg:grid-cols-[0.85fr_1.15fr]">
         <div>
-          <EditableText
-            contentKey="contact_label"
-            as="div"
-            className="mb-3.5 font-display text-xs font-semibold uppercase tracking-[0.3em] text-primary"
-          />
-          <EditableText
-            contentKey="contact_title"
-            as="h2"
-            className="mb-[14px] font-display text-[30px] font-bold leading-[1.1] tracking-[-0.02em] text-white md:mb-4 md:text-[40px]"
-          />
-          <EditableText
-            contentKey="contact_description"
-            as="p"
-            multiline
-            className="mb-[26px] text-[15px] leading-relaxed text-muted-foreground md:mb-9 md:text-[16px]"
-          />
+          <div className="mb-3.5 font-display text-xs font-semibold uppercase tracking-[0.3em] text-primary">
+            {content.contact_label}
+          </div>
+          <h2 className="mb-[14px] font-display text-[30px] font-bold leading-[1.1] tracking-[-0.02em] text-white md:mb-4 md:text-[40px]">
+            {content.contact_title}
+          </h2>
+          <p className="mb-[26px] text-[15px] leading-relaxed text-muted-foreground md:mb-9 md:text-[16px]">
+            {content.contact_description}
+          </p>
 
           <div className="flex flex-col gap-[14px] md:gap-5">
-            {Object.keys(CONTACT_ICONS).map((key) => {
-              const Icon = CONTACT_ICONS[key];
+            {contacts.map((item, i) => {
+              const Icon = item.icon;
               return (
-                <div key={key} className="flex items-center gap-[15px]">
+                <div key={i} className="flex items-center gap-[15px]">
                   <div className="flex size-[42px] shrink-0 items-center justify-center rounded-[10px] border border-white/[0.09] bg-white/[0.04]">
                     <Icon className="size-5 text-primary" strokeWidth={1.8} />
                   </div>
                   <div>
                     <div className="text-xs tracking-[0.04em] text-muted-foreground">
-                      {CONTACT_LABELS[key]}
+                      {item.label}
                     </div>
-                    <EditableText
-                      contentKey={key}
-                      as="div"
-                      className="font-display text-[15.5px] font-semibold text-white"
-                    />
+                    <div className="font-display text-[15.5px] font-semibold text-white">
+                      {item.value}
+                    </div>
                   </div>
                 </div>
               );
@@ -102,7 +77,7 @@ function Contact() {
               <Textarea
                 id="message"
                 rows={4}
-                placeholder="Lorem ipsum — opíšte, čo potrebujete: nové PC, čistenie, upgrade…"
+                placeholder="Opíšte, čo potrebujete: nové PC, čistenie, upgrade…"
               />
             </div>
             <Button type="submit" size="lg" className="w-full">

@@ -1,10 +1,6 @@
-import { useContent } from "@/context/ContentContext";
-import EditableText from "@/components/admin/EditableText";
-import EditableField from "@/components/admin/EditableField";
+import { content, steps } from "@/data";
 
 function Process() {
-  const { steps, updateStep } = useContent();
-
   return (
     <section
       id="proces"
@@ -12,16 +8,12 @@ function Process() {
     >
       <div className="mx-auto max-w-[1240px]">
         <div className="mb-[30px] md:mb-[52px] md:text-center">
-          <EditableText
-            contentKey="process_label"
-            as="div"
-            className="mb-3.5 font-display text-xs font-semibold uppercase tracking-[0.3em] text-primary"
-          />
-          <EditableText
-            contentKey="process_title"
-            as="h2"
-            className="font-display text-[28px] font-bold leading-[1.12] tracking-[-0.02em] text-white md:text-[38px] md:leading-[1.5]"
-          />
+          <div className="mb-3.5 font-display text-xs font-semibold uppercase tracking-[0.3em] text-primary">
+            {content.process_label}
+          </div>
+          <h2 className="font-display text-[28px] font-bold leading-[1.12] tracking-[-0.02em] text-white md:text-[38px] md:leading-[1.5]">
+            {content.process_title}
+          </h2>
         </div>
 
         <div className="flex flex-col md:grid md:gap-[22px] md:grid-cols-2 lg:grid-cols-4">
@@ -37,19 +29,12 @@ function Process() {
                 {step.num}
               </div>
               <div className="pt-[7px] md:pt-0">
-                <EditableField
-                  value={step.title}
-                  onSave={(val) => updateStep(step.id, "title", val)}
-                  as="h3"
-                  className="mb-[7px] font-display text-[17px] font-semibold text-white md:mb-2.5 md:text-[18px]"
-                />
-                <EditableField
-                  value={step.description}
-                  onSave={(val) => updateStep(step.id, "description", val)}
-                  as="p"
-                  multiline
-                  className="text-[14px] leading-[1.55] text-muted-foreground md:leading-relaxed"
-                />
+                <h3 className="mb-[7px] font-display text-[17px] font-semibold text-white md:mb-2.5 md:text-[18px]">
+                  {step.title}
+                </h3>
+                <p className="text-[14px] leading-[1.55] text-muted-foreground md:leading-relaxed">
+                  {step.description}
+                </p>
               </div>
             </div>
           ))}

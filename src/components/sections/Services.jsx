@@ -1,14 +1,7 @@
-import { Cpu, Sparkles, MemoryStick, Stethoscope, Cable, Gauge } from "lucide-react";
 import { Card } from "@/components/ui/card";
-import { useContent } from "@/context/ContentContext";
-import EditableText from "@/components/admin/EditableText";
-import EditableField from "@/components/admin/EditableField";
-
-const ICONS = { Cpu, Sparkles, MemoryStick, Stethoscope, Cable, Gauge };
+import { content, services } from "@/data";
 
 function Services() {
-  const { services, updateService } = useContent();
-
   return (
     <section
       id="sluzby"
@@ -16,28 +9,23 @@ function Services() {
     >
       <div className="mb-[30px] flex flex-col gap-5 md:mb-12 md:flex-row md:flex-wrap md:items-end md:justify-between">
         <div>
-          <EditableText
-            contentKey="services_label"
-            as="div"
-            className="mb-3.5 font-display text-xs font-semibold uppercase tracking-[0.3em] text-primary"
-          />
-          <EditableText
-            contentKey="services_title"
-            as="h2"
-            className="font-display text-[30px] font-bold leading-[1.1] tracking-[-0.02em] text-white md:text-[40px]"
-          />
+          <div className="mb-3.5 font-display text-xs font-semibold uppercase tracking-[0.3em] text-primary">
+            {content.services_label}
+          </div>
+          <h2 className="font-display text-[30px] font-bold leading-[1.1] tracking-[-0.02em] text-white md:text-[40px]">
+            {content.services_title}
+          </h2>
         </div>
-        <EditableText
-          contentKey="services_description"
-          as="p"
-          multiline
-          className="text-[15px] leading-[1.6] text-muted-foreground md:max-w-[360px] md:leading-relaxed"
-        />
+        {content.services_description && (
+          <p className="text-[15px] leading-[1.6] text-muted-foreground md:max-w-[360px] md:leading-relaxed">
+            {content.services_description}
+          </p>
+        )}
       </div>
 
       <div className="grid grid-cols-1 gap-[14px] md:grid-cols-2 md:gap-[18px] lg:grid-cols-3">
         {services.map((service) => {
-          const Icon = ICONS[service.icon] ?? Cpu;
+          const Icon = service.icon;
           return (
             <Card
               key={service.id}
@@ -47,19 +35,12 @@ function Services() {
                 <Icon className="size-[22px] text-primary" strokeWidth={1.8} />
               </div>
               <div className="min-w-0 flex-1">
-                <EditableField
-                  value={service.title}
-                  onSave={(val) => updateService(service.id, "title", val)}
-                  as="h3"
-                  className="mb-[7px] font-display text-[17px] font-semibold text-white md:mb-2.5 md:text-[19px]"
-                />
-                <EditableField
-                  value={service.description}
-                  onSave={(val) => updateService(service.id, "description", val)}
-                  as="p"
-                  multiline
-                  className="text-[14px] leading-[1.55] text-muted-foreground md:text-[14.5px] md:leading-relaxed"
-                />
+                <h3 className="mb-[7px] font-display text-[17px] font-semibold text-white md:mb-2.5 md:text-[19px]">
+                  {service.title}
+                </h3>
+                <p className="text-[14px] leading-[1.55] text-muted-foreground md:text-[14.5px] md:leading-relaxed">
+                  {service.description}
+                </p>
               </div>
             </Card>
           );
