@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
@@ -5,9 +6,25 @@ import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
 import { content, contacts } from "@/data";
 
+const FORMSPREE_ID = "YOUR_FORM_ID";
+
 function Contact() {
-  function handleSubmit(e) {
+  const [status, setStatus] = useState("idle");
+
+  async function handleSubmit(e) {
     e.preventDefault();
+    setStatus("sending");
+    const data = Object.fromEntries(new FormData(e.target));
+    try {
+      const res = await fetch(`https://formspree.io/f/${FORMSPREE_ID}`, {
+        method: "POST",
+        headers: { Accept: "application/json" },
+        body: JSON.stringify(data),
+      });
+      setStatus(res.ok ? "success" : "error");
+    } catch {
+      setStatus("error");
+    }
   }
 
   return (
@@ -57,33 +74,58 @@ function Contact() {
         </div>
 
         <Card className="px-5 py-6 md:p-[34px]">
-          <form onSubmit={handleSubmit} className="space-y-[18px]">
-            <div className="grid grid-cols-1 gap-[18px] md:grid-cols-2">
-              <div className="space-y-2">
-                <Label htmlFor="name">Meno</Label>
-                <Input id="name" placeholder="Vaše meno" />
+          {status === "success" ? (
+            <div className="flex min-h-[260px] flex-col items-center justify-center gap-3 text-center">
+              <div className="flex size-12 items-center justify-center rounded-full bg-primary/10 text-primary text-2xl">
+                ✓
+              </div>
+              <h3 className="font-display text-lg font-semibold text-white">Správa odoslaná</h3>
+              <p className="text-sm text-muted-foreground">
+                Ozveme sa vám do 24 hodín.
+              </p>
+              <button
+                onClick={() => setStatus("idle")}
+                className="mt-2 text-sm text-primary hover:underline"
+              >
+                Odoslať ďalšiu správu
+              </button>
+            </div>
+          ) : (
+            <form onSubmit={handleSubmit} className="space-y-[18px]">
+              <div className="grid grid-cols-1 gap-[18px] md:grid-cols-2">
+                <div className="space-y-2">
+                  <Label htmlFor="name">Meno</Label>
+                  <Input id="name" name="name" placeholder="Vaše meno" required />
+                </div>
+                <div className="space-y-2">
+                  <Label htmlFor="phone">Telefón</Label>
+                  <Input id="phone" name="phone" type="tel" placeholder="+421 9xx xxx xxx" />
+                </div>
               </div>
               <div className="space-y-2">
-                <Label htmlFor="phone">Telefón</Label>
-                <Input id="phone" type="tel" placeholder="+421 9xx xxx xxx" />
+                <Label htmlFor="email">E-mail</Label>
+                <Input id="email" name="email" type="email" placeholder="vas@email.sk" required />
               </div>
-            </div>
-            <div className="space-y-2">
-              <Label htmlFor="email">E-mail</Label>
-              <Input id="email" type="email" placeholder="vas@email.sk" />
-            </div>
-            <div className="space-y-2">
-              <Label htmlFor="message">Správa</Label>
-              <Textarea
-                id="message"
-                rows={4}
-                placeholder="Opíšte, čo potrebujete: nové PC, čistenie, upgrade…"
-              />
-            </div>
-            <Button type="submit" size="lg" className="w-full">
-              Odoslať dopyt
-            </Button>
-          </form>
+              <div className="space-y-2">
+                <Label htmlFor="message">Správa</Label>
+                <Textarea
+                  id="message"
+                  name="message"
+                  rows={4}
+                  placeholder="Opíšte, čo potrebujete: nové PC, čistenie, upgrade…"
+                  required
+                />
+              </div>
+              {status === "error" && (
+                <p className="text-sm text-red-400">
+                  Niečo sa pokazilo. Skúste to znova alebo nás kontaktujte priamo.
+                </p>
+              )}
+              <Button type="submit" size="lg" className="w-full" disabled={status === "sending"}>
+                {status === "sending" ? "Odosielam…" : "Odoslať dopyt"}
+              </Button>
+            </form>
+          )}
         </Card>
       </div>
     </section>
