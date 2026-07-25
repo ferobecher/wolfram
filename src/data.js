@@ -20,12 +20,11 @@ export const content = {
   contact_label: "KONTAKT",
   contact_title: "Povedzte nám o vašom projekte",
   contact_description:
-    "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ozveme sa vám do 24 hodín s nezáväznou ponukou.",
+    "Ozveme sa vám do 24 hodín s nezáväznou ponukou.",
   contact_email: "wolframgroup26@gmail.com",
   contact_phone: "+421 944 074 022",
   contact_instagram: "@wolfram.group",
-  footer_description:
-    "Custom Performance Systems. Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+  footer_description: "Custom Performance Systems.",
   footer_instagram: "@wolfram.group",
 };
 

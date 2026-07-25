@@ -39,8 +39,7 @@ function Footer() {
           <div className="col-span-2 md:col-span-1">
             <Wordmark className="mb-[18px]" />
             <p className="mb-5 max-w-[300px] text-sm leading-relaxed text-muted-foreground">
-              Custom Performance Systems. Lorem ipsum dolor sit amet,
-              consectetur adipiscing elit.
+              Custom Performance Systems.
             </p>
             <a
               href="https://instagram.com/wolfram.group"
