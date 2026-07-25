@@ -1,27 +1,47 @@
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, Instagram } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { content, stats, heroPhotoUrl } from "@/data";
 
 function Hero() {
   return (
-    <section id="hero" className="relative min-h-[600px] overflow-hidden md:min-h-[740px]">
+    <section
+      id="hero"
+      className="relative overflow-hidden"
+      style={{ minHeight: "calc(100svh - 64px)" }}
+    >
       {heroPhotoUrl && (
         <img
           src={heroPhotoUrl}
           alt=""
           aria-hidden="true"
-          className="absolute bottom-0 right-[-4%] h-[88%] w-auto max-w-none md:right-[-2%] md:h-[92%]"
+          className="absolute right-0 top-0 h-full w-auto max-w-none"
         />
       )}
 
-      {/* top fade — keeps navbar area clean */}
-      <div className="absolute inset-x-0 top-0 h-[220px] bg-gradient-to-b from-background via-background/85 to-transparent" />
+      {/* left fade — solid background then melts into image */}
+      <div
+        className="absolute inset-y-0 left-0 w-[75%]"
+        style={{
+          background:
+            "linear-gradient(to right, #040405 38%, rgba(4,4,5,0.82) 52%, transparent 72%)",
+        }}
+      />
 
-      {/* left fade — text readability, lets wolf bleed in slightly */}
-      <div className="absolute inset-y-0 left-0 w-[62%] bg-gradient-to-r from-background via-background/80 to-transparent md:w-[52%]" />
+      {/* subtle top fade */}
+      <div
+        className="absolute inset-x-0 top-0 h-[90px]"
+        style={{
+          background: "linear-gradient(to bottom, #040405 0%, transparent 100%)",
+        }}
+      />
 
       {/* bottom fade */}
-      <div className="absolute bottom-0 inset-x-0 h-24 bg-gradient-to-t from-background to-transparent" />
+      <div
+        className="absolute bottom-0 inset-x-0 h-28"
+        style={{
+          background: "linear-gradient(to top, #040405 0%, transparent 100%)",
+        }}
+      />
 
       <div className="relative mx-auto max-w-[1240px] px-5 pb-[60px] pt-10 md:px-10 md:pb-[80px] md:pt-[90px]">
         <div className="max-w-[520px]">
@@ -67,6 +87,17 @@ function Hero() {
           </div>
         </div>
       </div>
+
+      {/* Instagram badge — bottom right */}
+      <a
+        href="https://instagram.com/wolfram.group"
+        target="_blank"
+        rel="noreferrer"
+        className="absolute bottom-6 right-6 z-10 flex items-center gap-2.5 rounded-[10px] border border-white/10 bg-background/70 px-4 py-[11px] backdrop-blur-md transition-colors hover:border-primary/40"
+      >
+        <Instagram className="size-[18px] text-primary" strokeWidth={2} />
+        <span className="font-display text-sm font-semibold text-white">@wolfram.group</span>
+      </a>
     </section>
   );
 }
