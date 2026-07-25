@@ -6,39 +6,19 @@ function Hero() {
   return (
     <section
       id="hero"
-      className="relative overflow-hidden"
-      style={{ minHeight: "calc(100svh - 64px)" }}
+      className="relative overflow-hidden md:min-h-[calc(100svh-64px)]"
     >
+      {/* Desktop only: full-height background image */}
       {heroPhotoUrl && (
-        <>
-          {/* Mobile: image anchored bottom-right, landscape fills lower half */}
-          <img
-            src={heroPhotoUrl}
-            alt=""
-            aria-hidden="true"
-            className="absolute bottom-0 right-0 h-[52%] w-auto max-w-none md:hidden"
-          />
-          {/* Desktop: image full-height, top-right */}
-          <img
-            src={heroPhotoUrl}
-            alt=""
-            aria-hidden="true"
-            className="absolute right-0 top-0 hidden h-full w-auto max-w-none md:block"
-          />
-        </>
+        <img
+          src={heroPhotoUrl}
+          alt=""
+          aria-hidden="true"
+          className="absolute right-0 top-0 hidden h-full w-auto max-w-none md:block"
+        />
       )}
 
-      {/* Mobile gradient: solid top half for text, fades into image at bottom */}
-      <div
-        className="absolute inset-0 md:hidden"
-        style={{
-          background:
-            "linear-gradient(to bottom, #040405 40%, rgba(4,4,5,0.88) 54%, rgba(4,4,5,0.2) 78%, transparent 100%), " +
-            "linear-gradient(to right, #040405 28%, transparent 72%)",
-        }}
-      />
-
-      {/* Desktop gradient: left fade, wolf bleeds in */}
+      {/* Desktop: left fade */}
       <div
         className="absolute inset-y-0 left-0 hidden w-[75%] md:block"
         style={{
@@ -46,16 +26,14 @@ function Hero() {
             "linear-gradient(to right, #040405 38%, rgba(4,4,5,0.82) 52%, transparent 72%)",
         }}
       />
-
-      {/* Desktop top fade */}
+      {/* Desktop: top fade */}
       <div
         className="absolute inset-x-0 top-0 hidden h-[90px] md:block"
         style={{ background: "linear-gradient(to bottom, #040405, transparent)" }}
       />
-
-      {/* Bottom fade — both */}
+      {/* Desktop: bottom fade */}
       <div
-        className="absolute bottom-0 inset-x-0 h-28"
+        className="absolute bottom-0 inset-x-0 hidden h-28 md:block"
         style={{ background: "linear-gradient(to top, #040405, transparent)" }}
       />
 
@@ -102,6 +80,17 @@ function Hero() {
             ))}
           </div>
         </div>
+
+        {/* Mobile only: image in normal flow below text */}
+        {heroPhotoUrl && (
+          <div className="mt-8 overflow-hidden rounded-[16px] border border-white/[0.07] md:hidden">
+            <img
+              src={heroPhotoUrl}
+              alt="Wolfram Group — zostava na mieru"
+              className="block h-auto w-full"
+            />
+          </div>
+        )}
       </div>
 
       {/* Instagram badge — desktop only */}
