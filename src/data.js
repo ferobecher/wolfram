@@ -94,20 +94,20 @@ export const prebuilds = [
     name: "Wolfram Core",
     price: "1 200 €",
     desc: "Spoľahlivá zostava na prácu a bežné hranie. Tichý chod, plynulý výkon.",
-    image: null,
+    image: "/1.jpg",
   },
   {
     id: 2,
     name: "Wolfram Edge",
     price: "2 000 €",
     desc: "Vyvážený výkon pre náročné hry a tvorbu obsahu vo vysokých detailoch.",
-    image: null,
+    image: "/2.jpg",
   },
   {
     id: 3,
     name: "Wolfram Apex",
     price: "Na mieru",
     desc: "Vrcholová zostava bez kompromisov — komponenty a chladenie na najvyššej úrovni.",
-    image: null,
+    image: "/3.jpg",
   },
 ];
