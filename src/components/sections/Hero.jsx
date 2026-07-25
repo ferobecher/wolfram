@@ -51,12 +51,12 @@ function Hero() {
                 "linear-gradient(140deg, hsl(var(--primary) / 0.5), transparent 55%)",
             }}
           />
-          <div className="relative z-0 h-[300px] rounded-[17px] border border-white/10 bg-gradient-to-br from-white/[0.04] to-transparent md:h-[440px] overflow-hidden">
+          <div className="relative z-0 overflow-hidden rounded-[17px] border border-white/10 bg-gradient-to-br from-white/[0.04] to-transparent">
             {heroPhotoUrl && (
               <img
                 src={heroPhotoUrl}
                 alt="Wolfram Group — zostava na mieru"
-                className="h-full w-full object-cover"
+                className="block h-auto w-full"
               />
             )}
           </div>
