@@ -1,4 +1,4 @@
-import { ArrowRight, Cpu } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { content, stats, heroPhotoUrl } from "@/data";
 
@@ -59,17 +59,6 @@ function Hero() {
                 className="h-full w-full object-cover"
               />
             )}
-          </div>
-          <div className="absolute bottom-[18px] left-[18px] z-20 flex items-center gap-3 rounded-[10px] border border-white/10 bg-background/80 px-4 py-[11px] backdrop-blur">
-            <Cpu className="size-[18px] text-primary" />
-            <div>
-              <div className="font-display text-xs font-semibold text-white">
-                Ryzen / Intel · RTX
-              </div>
-              <div className="text-[11px] text-muted-foreground">
-                Zostava na mieru
-              </div>
-            </div>
           </div>
         </div>
 
