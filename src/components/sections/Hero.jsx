@@ -11,7 +11,7 @@ function Hero() {
           src={heroPhotoUrl}
           alt=""
           aria-hidden="true"
-          className="absolute inset-0 h-full w-full object-cover object-center md:hidden"
+          className="absolute inset-0 h-full w-full object-cover object-[center_20%] md:hidden"
         />
       )}
       {/* Mobile gradient: barely visible at top → solid dark at bottom */}
