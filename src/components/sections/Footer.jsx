@@ -3,21 +3,12 @@ import Wordmark from "@/components/Wordmark";
 
 const columns = [
   {
-    title: "Služby",
+    title: "Stránky",
     links: [
-      { href: "#sluzby", label: "Zostavenie PC" },
-      { href: "#sluzby", label: "Čistenie a údržba" },
-      { href: "#sluzby", label: "Upgrade komponentov" },
-      { href: "#sluzby", label: "Diagnostika" },
-    ],
-  },
-  {
-    title: "Spoločnosť",
-    links: [
+      { href: "#sluzby", label: "Služby" },
+      { href: "#zostavy", label: "Zostavy" },
       { href: "#proces", label: "Postup" },
       { href: "#kontakt", label: "Kontakt" },
-      { href: "#", label: "Referencie" },
-      { href: "#", label: "Cenník" },
     ],
   },
   {
@@ -35,7 +26,7 @@ function Footer() {
   return (
     <footer className="border-t border-white/[0.07] bg-[#070709] px-5 pb-7 pt-10 md:px-10 md:pb-8 md:pt-14">
       <div className="mx-auto max-w-[1240px]">
-        <div className="grid grid-cols-2 gap-x-5 gap-y-7 border-b border-white/[0.07] pb-8 md:gap-10 md:grid-cols-2 lg:grid-cols-[1.6fr_1fr_1fr_1fr]">
+        <div className="grid grid-cols-2 gap-x-5 gap-y-7 border-b border-white/[0.07] pb-8 md:gap-10 md:grid-cols-2 lg:grid-cols-[1.6fr_1fr_1fr]">
           <div className="col-span-2 md:col-span-1">
             <Wordmark className="mb-[18px]" />
             <p className="mb-5 max-w-[300px] text-sm leading-relaxed text-muted-foreground">
