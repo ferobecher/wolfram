@@ -88,3 +88,27 @@ export const stats = [
   { value: "24 h", label: "Priemerná odozva" },
   { value: "2 roky", label: "Záruka na prácu" },
 ];
+
+export const prebuilds = [
+  {
+    id: 1,
+    name: "Wolfram Core",
+    price: "1 200 €",
+    desc: "Spoľahlivá zostava na prácu a bežné hranie. Tichý chod, plynulý výkon.",
+    image: null,
+  },
+  {
+    id: 2,
+    name: "Wolfram Edge",
+    price: "2 000 €",
+    desc: "Vyvážený výkon pre náročné hry a tvorbu obsahu vo vysokých detailoch.",
+    image: null,
+  },
+  {
+    id: 3,
+    name: "Wolfram Apex",
+    price: "Na mieru",
+    desc: "Vrcholová zostava bez kompromisov — komponenty a chladenie na najvyššej úrovni.",
+    image: null,
+  },
+];

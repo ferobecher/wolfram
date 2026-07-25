@@ -4,6 +4,7 @@ import Wordmark from "@/components/Wordmark";
 
 const links = [
   { href: "#sluzby", label: "Služby" },
+  { href: "#zostavy", label: "Zostavy" },
   { href: "#proces", label: "Postup" },
   { href: "#kontakt", label: "Kontakt" },
 ];
