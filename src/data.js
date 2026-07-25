@@ -28,8 +28,7 @@ export const content = {
   footer_instagram: "@wolfram.group",
 };
 
-export const heroPhotoUrl =
-  "https://stwdxszimedzvmomhowv.supabase.co/storage/v1/object/public/photos/hero/1782154312657.png";
+export const heroPhotoUrl = "/hero.jpg";
 
 export const services = [
   {
