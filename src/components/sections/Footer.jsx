@@ -1,5 +1,5 @@
-import { Instagram } from "lucide-react";
 import Wordmark from "@/components/Wordmark";
+import { Instagram } from "lucide-react";
 
 const columns = [
   {
@@ -16,7 +16,7 @@ const columns = [
     links: [
       { href: "mailto:wolframgroup26@gmail.com", label: "wolframgroup26@gmail.com" },
       { href: "tel:+421944074022", label: "+421 944 074 022" },
-      { href: null, label: "Bratislava, Slovensko" },
+      { href: null, label: "Banská Bystrica, Slovensko" },
       { href: null, label: "Po–Pia · 9:00–17:00" },
     ],
   },
