@@ -4,11 +4,26 @@ import { content, stats, heroPhotoUrl } from "@/data";
 
 function Hero() {
   return (
-    <section
-      id="hero"
-      className="relative overflow-hidden md:min-h-[calc(100svh-64px)]"
-    >
-      {/* Desktop only: full-height background image */}
+    <section id="hero" className="relative overflow-hidden">
+      {/* ── Mobile: image fills full section ── */}
+      {heroPhotoUrl && (
+        <img
+          src={heroPhotoUrl}
+          alt=""
+          aria-hidden="true"
+          className="absolute inset-0 h-full w-full object-cover object-center md:hidden"
+        />
+      )}
+      {/* Mobile gradient: barely visible at top → solid dark at bottom */}
+      <div
+        className="absolute inset-0 pointer-events-none md:hidden"
+        style={{
+          background:
+            "linear-gradient(180deg, rgba(4,4,5,0.15) 0%, rgba(4,4,5,0.55) 45%, rgba(4,4,5,0.96) 88%)",
+        }}
+      />
+
+      {/* ── Desktop: image anchored top-right ── */}
       {heroPhotoUrl && (
         <img
           src={heroPhotoUrl}
@@ -17,80 +32,108 @@ function Hero() {
           className="absolute right-0 top-0 hidden h-full w-auto max-w-none md:block"
         />
       )}
-
-      {/* Desktop: left fade */}
       <div
-        className="absolute inset-y-0 left-0 hidden w-[75%] md:block"
+        className="absolute inset-y-0 left-0 hidden w-[75%] pointer-events-none md:block"
         style={{
           background:
             "linear-gradient(to right, #040405 38%, rgba(4,4,5,0.82) 52%, transparent 72%)",
         }}
       />
-      {/* Desktop: top fade */}
       <div
-        className="absolute inset-x-0 top-0 hidden h-[90px] md:block"
+        className="absolute inset-x-0 top-0 hidden h-[90px] pointer-events-none md:block"
         style={{ background: "linear-gradient(to bottom, #040405, transparent)" }}
       />
-      {/* Desktop: bottom fade */}
       <div
-        className="absolute bottom-0 inset-x-0 hidden h-28 md:block"
+        className="absolute bottom-0 inset-x-0 h-28 pointer-events-none md:block hidden"
         style={{ background: "linear-gradient(to top, #040405, transparent)" }}
       />
 
-      <div className="relative mx-auto max-w-[1240px] px-5 pb-[60px] pt-10 md:px-10 md:pb-[80px] md:pt-[90px]">
+      {/* ── Mobile layout: content pinned to bottom ── */}
+      <div className="relative flex h-[640px] flex-col justify-end px-[22px] pb-[34px] md:hidden">
+        <div className="mb-4 inline-flex items-center gap-2 rounded-full border border-primary/40 bg-primary/[0.1] px-3 py-[6px]">
+          <span className="h-[5px] w-[5px] animate-pulse-dot rounded-full bg-primary" />
+          <span className="font-display text-[9.5px] font-semibold uppercase tracking-[0.2em] text-primary/90">
+            {content.hero_badge}
+          </span>
+        </div>
+
+        <h1 className="mb-3 font-display text-[32px] font-bold leading-[1.08] tracking-[-0.02em] text-white text-balance">
+          {content.hero_title_1}{" "}
+          <span className="text-primary">{content.hero_title_2}</span>
+        </h1>
+
+        <p className="mb-5 text-[14px] leading-[1.55] text-muted-foreground">
+          {content.hero_description}
+        </p>
+
+        <div className="mb-5 flex gap-[10px]">
+          <a
+            href="#kontakt"
+            className="flex-1 rounded-[9px] bg-primary py-[13px] text-center font-display text-[14px] font-semibold text-background"
+          >
+            Získať ponuku
+          </a>
+          <a
+            href="#sluzby"
+            className="flex-1 rounded-[9px] border border-white/25 bg-white/[0.08] py-[13px] text-center font-display text-[14px] font-semibold text-white"
+          >
+            Služby
+          </a>
+        </div>
+
+        <div className="flex gap-[22px] border-t border-white/[0.12] pt-4">
+          {stats.map((stat, i) => (
+            <div key={i}>
+              <div className="font-display text-[19px] font-bold text-white">{stat.value}</div>
+              <div className="text-[10.5px] text-muted-foreground">{stat.label}</div>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      {/* ── Desktop layout: content on left, normal flow ── */}
+      <div
+        className="relative mx-auto hidden max-w-[1240px] px-10 pb-[80px] pt-[90px] md:block"
+        style={{ minHeight: "calc(100svh - 64px)" }}
+      >
         <div className="max-w-[520px]">
-          <div className="mb-[22px] inline-flex items-center gap-2.5 rounded-full border border-primary/35 bg-primary/[0.06] px-[13px] py-[7px] md:mb-7 md:px-3.5">
+          <div className="mb-7 inline-flex items-center gap-2.5 rounded-full border border-primary/35 bg-primary/[0.06] px-3.5 py-[7px]">
             <span className="h-1.5 w-1.5 animate-pulse-dot rounded-full bg-primary" />
             <span className="font-display text-[11px] font-medium uppercase tracking-[0.28em] text-primary/90">
               {content.hero_badge}
             </span>
           </div>
 
-          <h1 className="mb-[18px] font-display text-[36px] font-bold leading-[1.06] tracking-[-0.02em] text-white md:mb-6 md:text-[52px] md:leading-[1.04] lg:text-[60px]">
+          <h1 className="mb-6 font-display text-[52px] font-bold leading-[1.04] tracking-[-0.02em] text-white lg:text-[60px]">
             <span className="block">{content.hero_title_1}</span>
             <span className="text-primary">{content.hero_title_2}</span>
           </h1>
 
-          <p className="mb-[26px] max-w-[420px] text-[16px] leading-relaxed text-muted-foreground md:mb-9 md:text-[17px]">
+          <p className="mb-9 max-w-[420px] text-[17px] leading-relaxed text-muted-foreground">
             {content.hero_description}
           </p>
 
-          <div className="flex flex-col gap-[11px] md:flex-row md:gap-3.5">
-            <Button asChild className="w-full md:w-auto">
+          <div className="flex gap-3.5">
+            <Button asChild className="w-auto">
               <a href="#kontakt">
                 Získať ponuku
                 <ArrowRight />
               </a>
             </Button>
-            <Button variant="outline" asChild className="w-full md:w-auto">
+            <Button variant="outline" asChild className="w-auto">
               <a href="#sluzby">Naše služby</a>
             </Button>
           </div>
 
-          <div className="mt-[30px] grid grid-cols-3 gap-[10px] border-t border-white/[0.07] pt-[22px] md:mt-12 md:flex md:gap-10 md:pt-8">
+          <div className="mt-12 flex gap-10 border-t border-white/[0.07] pt-8">
             {stats.map((stat, i) => (
               <div key={i}>
-                <div className="font-display text-[22px] font-bold text-white md:text-[30px]">
-                  {stat.value}
-                </div>
-                <div className="mt-[3px] text-[11px] text-muted-foreground md:mt-0.5 md:text-[13px]">
-                  {stat.label}
-                </div>
+                <div className="font-display text-[30px] font-bold text-white">{stat.value}</div>
+                <div className="mt-0.5 text-[13px] text-muted-foreground">{stat.label}</div>
               </div>
             ))}
           </div>
         </div>
-
-        {/* Mobile only: image in normal flow below text */}
-        {heroPhotoUrl && (
-          <div className="mt-8 overflow-hidden rounded-[16px] border border-white/[0.07] md:hidden">
-            <img
-              src={heroPhotoUrl}
-              alt="Wolfram Group — zostava na mieru"
-              className="block h-auto w-full"
-            />
-          </div>
-        )}
       </div>
 
       {/* Instagram badge — desktop only */}
