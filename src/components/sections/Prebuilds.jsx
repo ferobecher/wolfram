@@ -25,7 +25,11 @@ function Prebuilds() {
               {build.image ? (
                 <img
                   src={build.image}
-                  alt={build.name}
+                  alt={build.alt}
+                  width={784}
+                  height={1168}
+                  loading="lazy"
+                  decoding="async"
                   className="h-full w-full object-cover"
                 />
               ) : (

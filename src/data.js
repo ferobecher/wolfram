@@ -28,7 +28,9 @@ export const content = {
   footer_instagram: "@wolfram.group",
 };
 
-export const heroPhotoUrl = "/hero.jpg";
+export const heroPhotoUrl = "/pc-zostava-na-mieru-banska-bystrica.webp";
+export const heroPhotoAlt =
+  "Herné PC na mieru postavené Wolfram Group — custom zostava s vodným chladením, Banská Bystrica";
 
 export const services = [
   {
@@ -94,20 +96,23 @@ export const prebuilds = [
     name: "Wolfram Core",
     price: "1 200 €",
     desc: "Spoľahlivá zostava na prácu a bežné hranie. Tichý chod, plynulý výkon.",
-    image: "/1.jpg",
+    image: "/herne-pc-na-mieru-wolfram-core.webp",
+    alt: "Wolfram Core — PC na mieru na prácu a bežné hranie, tichá zostava",
   },
   {
     id: 2,
     name: "Wolfram Edge",
     price: "2 000 €",
     desc: "Vyvážený výkon pre náročné hry a tvorbu obsahu vo vysokých detailoch.",
-    image: "/2.jpg",
+    image: "/herne-pc-na-mieru-wolfram-edge.webp",
+    alt: "Wolfram Edge — herné PC na mieru pre náročné hry a tvorbu obsahu",
   },
   {
     id: 3,
     name: "Wolfram Apex",
     price: "Na mieru",
     desc: "Vrcholová zostava bez kompromisov — komponenty a chladenie na najvyššej úrovni.",
-    image: "/3.jpg",
+    image: "/herne-pc-na-mieru-wolfram-apex.webp",
+    alt: "Wolfram Apex — výkonné herné PC na mieru s prémiovým chladením",
   },
 ];

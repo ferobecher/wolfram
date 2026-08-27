@@ -73,14 +73,6 @@ function Footer() {
           <span className="text-[13px] text-muted-foreground/80">
             © 2026 Wolfram Group. Všetky práva vyhradené.
           </span>
-          <div className="flex gap-6">
-            <a href="#" className="text-[13px] text-muted-foreground/80 transition-colors hover:text-muted-foreground">
-              Ochrana súkromia
-            </a>
-            <a href="#" className="text-[13px] text-muted-foreground/80 transition-colors hover:text-muted-foreground">
-              Obchodné podmienky
-            </a>
-          </div>
         </div>
       </div>
     </footer>
